@@ -1,0 +1,30 @@
+<!-- edit-dialog.component.html -->
+<form [formGroup]="editForm">
+
+  <!-- ID Input -->
+  <mat-form-field appearance="fill">
+    <mat-label>ID</mat-label>
+    <input matInput formControlName="id">
+  </mat-form-field>
+
+  <!-- User ID Input -->
+  <mat-form-field appearance="fill">
+    <mat-label>User Role</mat-label>
+    <input matInput formControlName="userId">
+  </mat-form-field>
+
+  <!-- Title Input -->
+  <mat-form-field appearance="fill">
+    <mat-label>Title</mat-label>
+    <input matInput formControlName="title">
+  </mat-form-field>
+
+  <!-- Completed Input -->
+  <mat-checkbox formControlName="completed">Completed</mat-checkbox>
+
+  <!-- Action Buttons -->
+  <div class="buttons">
+    <button mat-button (click)="onNoClick()">Cancel</button>
+    <button mat-button color="primary" (click)="onUpdateClick()" *ngIf="isEditMode">Update</button>
+    <button mat-button color="primary" (click)="onAddClick()" *ngIf="!isEditMode">Add</button>
+  </div>

@@ -1,0 +1,45 @@
+<!-- material-table.component.html -->
+<div>
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort>
+
+
+  <!-- ID Column -->
+  <ng-container matColumnDef="id">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let element">{{element.id}}</td>
+  </ng-container>
+
+  <!-- User ID Column -->
+  <ng-container matColumnDef="userId">
+    <th mat-header-cell *matHeaderCellDef>User Role</th>
+    <td mat-cell *matCellDef="let element">{{ getUserRole(element.userId)}}</td>
+  </ng-container>
+
+  <!-- Title Column -->
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef mat-sort-header>Title</th>
+    <td mat-cell *matCellDef="let element">{{element.title}}</td>
+  </ng-container>
+
+  <!-- Completed Column -->
+  <ng-container matColumnDef="completed">
+    <th mat-header-cell *matHeaderCellDef>Completed</th>
+    <td mat-cell *matCellDef="let element">{{element.completed ? 'Yes' : 'No'}}</td>
+  </ng-container>
+
+  <!-- Actions Column -->
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions <button (click)="openAddDialog()">+</button></th>
+    <td mat-cell *matCellDef="let element">
+      <button (click)="openEditDialog(element)">Edit</button>
+      <button (click)="onDelete(element.id)">
+        delete
+      </button>
+    </td>
+  </ng-container>
+
+  <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+  <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+
+</table>
+</div>
